@@ -10,6 +10,6 @@ Kluster is a Flask 3.0 web app to help collectors track their collections, estim
 
 ## Setup
 
-### Run this command:
+### Run this command (for me):
 source .venv/Scripts/activate
 python -m flask --app wsgi:app run --debug
