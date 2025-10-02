@@ -1,0 +1,6 @@
+Flask
+Flask-Login
+Flask-Migrate
+python-dotenv
+sqlalchemy
+# add other required packages...
