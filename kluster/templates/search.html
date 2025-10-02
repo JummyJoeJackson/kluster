@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="search">
+    <h2>Search Kluster</h2>
+    <form method="get" class="search-form">
+      <input name="q" value="{{ term }}" placeholder="Search users or items..." autofocus>
+      <button type="submit" class="btn-primary">Search</button>
+    </form>
+
+    {% if term %}
+      <div class="search-results">
+        <section class="search-users">
+          <h3>Users</h3>
+          <ul>
+            {% for u in users %}
+              <li><a href="{{ url_for('profile.view_profile', username=u.username) }}">@{{ u.username }}</a></li>
+            {% else %}
+              <li>No users found</li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section class="search-items">
+          <h3>Items</h3>
+          <ul>
+            {% for it in items %}
+              <li>{{ it.name }} (${{ '%.2f'|format(it.estimated_value) }})</li>
+            {% else %}
+              <li>No items found</li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}

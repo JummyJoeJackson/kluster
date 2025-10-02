@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="profile">
+    <div class="profile-header">
+      <img src="{{ url_for('static', filename='img/profile_placeholder.png') }}" alt="Profile Picture" class="profile-pic" />
+      <div class="profile-info">
+        <h2>@{{ user.username }}</h2>
+        <div class="specialization">{{ user.specialization or "Watch Collector" }}</div>
+        {% if not is_owner %}
+        <a class="btn-primary" href="{{ url_for('messages.thread', username=user.username) }}">Message</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if is_owner %}
+      <form method="post" class="profile-edit-form" action="{{ url_for('profile.update_profile', username=user.username) }}">
+        <label>Bio
+          <textarea name="bio" rows="4">{{ user.bio }}</textarea>
+        </label>
+        <label>Specialization
+          <input name="specialization" value="{{ user.specialization }}">
+        </label>
+        <button type="submit" class="btn-primary">Save</button>
+      </form>
+    {% else %}
+      <article class="profile-bio">
+        <p>{{ user.bio }}</p>
+      </article>
+    {% endif %}
+  </section>
+{% endblock %}

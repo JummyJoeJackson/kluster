@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="messages">
+  <h2>Messages</h2>
+  <ul class="inbox-list">
+    {% for it in items %}
+      <li class="inbox-item">
+        <img src="{{ url_for('static', filename='img/profile_placeholder.png') }}" class="avatar" alt="avatar">
+        <div class="inbox-meta">
+          <a href="{{ url_for('messages.thread', username=it.other.username) }}">@{{ it.other.username }}</a>
+          <small>Last: {{ it.last or '—' }}</small>
+        </div>
+      </li>
+    {% else %}
+      <li>No conversations yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

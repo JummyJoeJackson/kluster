@@ -1,0 +1,24 @@
+[project]
+name = "kluster"
+version = "0.1.0"
+description = "Kluster prototype: collectors app with login, profile, collection, and search"
+requires-python = ">=3.11"
+dependencies = [
+  "Flask>=3.0.0",
+  "Flask-SQLAlchemy>=3.1.1",
+  "Flask-Migrate>=4.0.7",
+  "Flask-Login>=0.6.3",
+  "Flask-WTF>=1.2.1",
+  "WTForms>=3.1.2",
+  "email-validator>=2.2.0",
+  "psycopg2-binary>=2.9.9; platform_system!='Windows'",
+  "sqlite3-binary; platform_system=='Windows'",
+  "python-dotenv>=1.0.1",
+  "marshmallow>=3.21.3",
+  "prometheus-client>=0.20.0",
+  "structlog>=24.1.0",
+]
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-q"
+testpaths = ["tests"]

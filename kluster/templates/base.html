@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kluster</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_placeholder.png') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kluster - Social Media for Collectors">
+  <meta name="author" content="Diego Gonzalez">
+  <meta name="keywords" content="media, collection, manager, collectors, watches, cards, comics">
+</head>
+<body>
+<header class="header">
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='img/logo_placeholder.png') }}" alt="Kluster Logo" class="logo" />
+  </div>
+  <nav class="topnav">
+    <a href="{{ url_for('profile.view_profile', username=current_user.username) }}">Profile</a>
+    <a href="{{ url_for('collection.view_collection') }}">Collection</a>
+    <a href="{{ url_for('search.search') }}">Search</a>
+    <a href="{{ url_for('messages.inbox') }}">Messages</a>
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+  </nav>
+</header>
+<main class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flash">
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

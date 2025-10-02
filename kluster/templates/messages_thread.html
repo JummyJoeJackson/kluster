@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="messages">
+  <div class="thread-header">
+    <img src="{{ url_for('static', filename='img/profile_placeholder.png') }}" class="avatar" alt="avatar">
+    <h2>Chat with @{{ other.username }}</h2>
+  </div>
+  <div class="thread-box">
+    {% for m in messages %}
+      <div class="bubble {{ 'me' if m.sender_id == current_user.id else 'them' }}">
+        <div class="content">{{ m.body }}</div>
+        <div class="meta">{{ m.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+      </div>
+    {% else %}
+      <p>No messages yet. Say hello!</p>
+    {% endfor %}
+  </div>
+  <form method="post" class="thread-input">
+    <input name="body" placeholder="Type a message..." autocomplete="off" required>
+    <button type="submit" class="btn-primary">Send</button>
+  </form>
+</section>
+{% endblock %}

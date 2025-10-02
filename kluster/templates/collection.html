@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="collection">
+    <div class="collection-header">
+      <h2>Collection</h2>
+      <div class="values-summary">
+        Total value: <strong>${{ '%.2f'|format(total) }}</strong> | Average: <strong>${{ '%.2f'|format(average) }}</strong>
+      </div>
+    </div>
+
+    {% if centerpiece %}
+      <div class="centerpiece">
+        <div class="centerpiece-info">
+          <img src="{{ url_for('static', filename='img/item_placeholder.png') }}" alt="{{ centerpiece.name }}" class="centerpiece-pic"/>
+          <h3>{{ centerpiece.name }}</h3>
+          <p>Estimated value: ${{ '%.2f'|format(centerpiece.estimated_value) }}</p>
+        </div>
+        <div class="centerpiece-chart">
+          <!-- Placeholder for price chart -->
+          <svg width="280" height="120" class="price-chart" aria-label="Price history chart">
+            <polyline fill="none" stroke="#cfa12b" stroke-width="3"
+              points=PriceService.get_series
+            />
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+
+   <form method="post" action="{{ url_for('collection.add_item') }}" class="add-item-form add-item-form-full">
+    <div class="add-item-grid">
+      <label>
+        Name
+        <input name="name" placeholder="e.g., Rolex Submariner" required>
+      </label>
+      <label>
+        Category
+        <input name="category" placeholder="e.g., Watches">
+      </label>
+      <label>
+        Estimated value
+        <input name="estimated_value" type="number" step="0.01" placeholder="e.g., 10000" required>
+      </label>
+    </div>
+    <label class="add-item-desc">
+      Description
+      <textarea name="description" rows="2" placeholder="Notes, condition, year, etc."></textarea>
+    </label>
+    <div class="add-actions">
+      <button type="submit" class="btn-primary">Add item</button>
+    </div>
+  </form>
+
+
+    <ul class="item-grid">
+      {% for it in items %}
+        <li class="item-card">
+          <img src="{{ url_for('static', filename='img/item_placeholder.png') }}" alt="{{ it.name }}" class="item-pic" />
+          <div class="item-details">
+            <h4>{{ it.name }}</h4>
+            <p>${{ '%.2f'|format(it.estimated_value) }}</p>
+            <small>{{ it.category }}</small>
+          </div>
+          <form method="post" action="{{ url_for('collection.delete_item', item_id=it.id) }}">
+            <button type="submit" aria-label="Delete {{ it.name }}" class="delete-button">&times;</button>
+          </form>
+        </li>
+      {% else %}
+        <li>No items yet.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="login-container">
+    <div class="logo-stack">
+      <img src="{{ url_for('static', filename='img/logo_placeholder.png') }}" alt="Kluster Logo" class="logo-large" />
+      <h1>Kluster</h1>
+    </div>
+    <form method="post" action="{{ url_for('auth.signup' if signup else 'auth.login') }}" class="form-login">
+      {% if signup %}
+        <label>Username
+          <input name="username" required autofocus>
+        </label>
+      {% endif %}
+      <label>Email
+        <input type="email" name="email" required autofocus>
+      </label>
+      <label>Password
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit" class="btn-primary">{{ 'Create account' if signup else 'Login' }}</button>
+    </form>
+    <p class="toggle-link">
+      {% if signup %}
+        Already have an account? <a href="{{ url_for('auth.login') }}">Login</a>
+      {% else %}
+        New here? <a href="{{ url_for('auth.signup') }}">Sign up</a>
+      {% endif %}
+    </p>
+  </section>
+{% endblock %}
