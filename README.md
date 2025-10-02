@@ -7,7 +7,6 @@ Kluster is a Flask 3.0 web app to help collectors track their collections, estim
 - Python 3.11+
 - pip
 - SQLite (default) or PostgreSQL (set SQLALCHEMY_DATABASE_URI)
-- Optional: `gunicorn` for production
 
 ## Setup
 
