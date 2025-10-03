@@ -24,6 +24,15 @@ Kluster is a full-stack web platform for tracking and managing user collections.
 
 ***
 
+## Access Instructions
+
+- For local deployment, follow the steps under "Getting Started".
+- To access the live production site, visit:
+`https://kluster-flax.vercel.app/`
+- For developer/admin access, contact the project maintainer.
+
+***
+
 ## Getting Started
 
 1. **Clone the repository**
@@ -66,10 +75,3 @@ flask run
 - Customizable themes and user profiles
 
 ***
-
-## Access Instructions
-
-- For local deployment, follow the steps under "Getting Started".
-- To access the live production site, visit:
-`https://kluster-flax.vercel.app/`
-- For developer/admin access, contact the project maintainer.
