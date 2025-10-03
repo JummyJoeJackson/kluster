@@ -7,9 +7,9 @@ Kluster is a full-stack web platform for tracking and managing user collections.
 ## Table of Contents
 
 - [Features](#features)
+- [Access Instructions](#access-instructions)
 - [Getting Started](#getting-started)
 - [Coming Soon](#coming-soon)
-- [Access Instructions](#access-instructions)
 
 ***
 
