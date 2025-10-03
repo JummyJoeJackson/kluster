@@ -1,7 +1,5 @@
 # Kluster
 
-## Summary
-
 Kluster is a full-stack web platform for tracking and managing user collections. Built with Python and Flask, Kluster provides secure user authentication and robust, scalable database operations through SQLAlchemy.
 
 ***
