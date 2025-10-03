@@ -62,7 +62,7 @@ flask db upgrade
 flask run
 ```
 
-    - Visit `http://localhost:5000` in your browser.
+- Visit `http://localhost:5000` in your browser.
 
 ***
 
