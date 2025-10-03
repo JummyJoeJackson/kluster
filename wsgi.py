@@ -1,4 +1,4 @@
 from kluster.app import create_app
 
-# WSGI entrypoint (e.g., for gunicorn)
+# WSGI entrypoint
 app = create_app()
