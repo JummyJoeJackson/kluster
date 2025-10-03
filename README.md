@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # improve the readme.md file to include: title, summary, table of contents, features, getting started, coming soon features, access instructions
 
 Here’s an improved `README.md` draft for your Kluster project, covering all sections you requested and following best Python open source project practices:[^1][^9]
