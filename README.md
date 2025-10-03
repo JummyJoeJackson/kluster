@@ -68,10 +68,12 @@ flask run
 
 ## Coming Soon
 
-- User-to-user messaging notifications
 - Advanced search and filtering
-- REST API for mobile integration
-- Data export (CSV/JSON)
+- Robust Navigation Bar
 - Customizable themes and user profiles
+- Collection search, filtering, and price chart
+- User-to-user messaging notifications
+- REST API for mobile integration
+- Data import/export (CSV/JSON)
 
 ***
