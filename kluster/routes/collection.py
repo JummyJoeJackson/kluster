@@ -2,10 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, abort
 from flask_login import login_required, current_user
 from kluster.services.collection_service import CollectionService
 from kluster.services.price_service import PriceService
-from kluster.schemas import CollectionItemSchema
 
 collection_bp = Blueprint("collection", __name__, url_prefix="/collection")
-item_schema = CollectionItemSchema()
 
 @collection_bp.route("")
 @login_required
