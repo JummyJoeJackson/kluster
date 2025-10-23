@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from kluster.models import User, db
 import structlog
