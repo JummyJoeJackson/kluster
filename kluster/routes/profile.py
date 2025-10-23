@@ -6,11 +6,6 @@ import structlog
 profile_bp = Blueprint("profile", __name__, url_prefix="/u")
 log = structlog.get_logger()
 
-@profile_bp.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html', user=current_user)
-
 @profile_bp.route("/<username>")
 @login_required
 def view_profile(username: str):

@@ -1,8 +1,9 @@
 import os
 from flask import Flask, redirect, url_for
 from flask_migrate import Migrate
-from flask_login import LoginManager
 from dotenv import load_dotenv
+import logging
+from werkzeug.exceptions import HTTPException
 
 # Import app configuration and utilities
 from kluster.config import DevelopmentConfig, TestingConfig, ProductionConfig
@@ -48,5 +49,12 @@ def create_app(config_name: str | None = None) -> Flask:
     @app.errorhandler(404)
     def page_not_found(e):
         return redirect(url_for('auth.login'))
+    
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+        if isinstance(e, HTTPException):
+            return e
+        app.logger.error(f"Server Error: {e}", exc_info=True)
+        return "Internal Server Error", 500
 
     return app
