@@ -1,11 +1,10 @@
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
+from kluster.models import db, PriceCache
+from random import Random
 import json
 import math
-from random import Random
-
-from kluster.models import db, PriceCache
 
 @dataclass
 class PricePoint:
