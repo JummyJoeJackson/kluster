@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, redirect
 from flask_login import login_required, current_user
-from kluster.models import User
+from kluster.models import User, db
 import structlog
 
 profile_bp = Blueprint("profile", __name__, url_prefix="/u")
@@ -20,7 +20,6 @@ def update_profile(username: str):
         return ("Forbidden", 403)
     current_user.bio = request.form.get("bio", "")
     current_user.specialization = request.form.get("specialization", "")
-    from kluster.models import db
     db.session.commit()
     log.info("profile_updated", user_id=current_user.id)
     return render_template("profile.html", user=current_user, is_owner=True)
