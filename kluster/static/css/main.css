@@ -419,3 +419,17 @@ button:hover {
   border: 1px solid #ddd;
   border-radius: 8px;
 }
+
+.bell-glow {
+  color: gold; /* Change icon color */
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #cfa12b;
+  }
+  to {
+    text-shadow: 0 0 20px #cfa12b;
+  }
+}

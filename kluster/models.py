@@ -15,7 +15,8 @@ class User(db.Model, UserMixin):
     specialization = db.Column(db.String(120), default="")
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    collections = db.relationship("CollectionItem", backref="owner", lazy=True, cascade="all, delete-orphan")
+    collections = db.relationship( "CollectionItem", backref="owner", lazy=True, cascade="all, delete-orphan")
+    notifications = db.relationship("Notification", back_populates="user", lazy="dynamic", cascade="all, delete-orphan")
 
     def set_password(self, password: str) -> None:
         self.password_hash = generate_password_hash(password)
@@ -41,9 +42,7 @@ class MessageThread(db.Model):
     user_b_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, index=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    __table_args__ = (
-        db.UniqueConstraint("user_a_id", "user_b_id", name="uq_thread_pair"),
-    )
+    __table_args__ = (db.UniqueConstraint("user_a_id", "user_b_id", name="uq_thread_pair"),)
 
 class Message(db.Model):
     __tablename__ = "messages"
@@ -60,3 +59,15 @@ class PriceCache(db.Model):
     series_json = db.Column(db.Text, nullable=False)
     currency = db.Column(db.String(8), default="USD")
     refreshed_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+
+class Notification(db.Model):
+    __tablename__ = "notifications"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, index=True)
+    message_id = db.Column(db.Integer, db.ForeignKey("messages.id"), nullable=True)
+    is_read = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship("User", back_populates="notifications")
+    message = db.relationship("Message")

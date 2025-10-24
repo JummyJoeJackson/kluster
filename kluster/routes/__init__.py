@@ -4,3 +4,4 @@ from .collection import collection_bp
 from .search import search_bp
 from .health import health_bp
 from .messages import messages_bp
+from .notifications import notifications_bp

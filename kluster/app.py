@@ -10,7 +10,7 @@ from kluster.config import DevelopmentConfig, TestingConfig, ProductionConfig
 from kluster.logging_conf import setup_logging
 from kluster.metrics import before_request_metrics, after_request_metrics
 from kluster.models import db
-from kluster.routes import auth_bp, profile_bp, collection_bp, search_bp, health_bp, messages_bp
+from kluster.routes import auth_bp, profile_bp, collection_bp, search_bp, health_bp, messages_bp, notifications_bp
 from kluster.routes.auth import login_manager
 
 
@@ -38,6 +38,7 @@ def create_app(config_name: str | None = None) -> Flask:
     app.register_blueprint(search_bp)
     app.register_blueprint(health_bp)
     app.register_blueprint(messages_bp)
+    app.register_blueprint(notifications_bp)
 
     app.before_request(before_request_metrics)
     app.after_request(after_request_metrics)

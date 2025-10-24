@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Kluster</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_placeholder.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kluster - Social Media for Collectors">
   <meta name="author" content="Diego Gonzalez">
   <meta name="keywords" content="media, collection, manager, collectors, watches, cards, comics">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_placeholder.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <header class="header">
@@ -21,6 +22,17 @@
     <a href="{{ url_for('search.search') }}">Search</a>
     <a href="{{ url_for('messages.inbox') }}">Messages</a>
     <a href="{{ url_for('auth.logout') }}">Logout</a>
+  </nav>
+  <nav class="navbar">
+    <div class="navbar-right">
+      {% if current_user.is_authenticated %}
+        {% set unread_notifications = current_user.notifications.filter_by(is_read=False).count() %}
+        {% if unread_notifications > 0 %}
+          <i class="fa fa-bell bell-glow"></i>
+          <span class="badge bell-glow">{{ unread_notifications }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
   </nav>
 </header>
 <main class="container">
