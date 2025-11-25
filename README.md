@@ -1,4 +1,4 @@
-# <img width="648" height="648" alt="logo_placeholder" src="https://github.com/user-attachments/assets/fff3642a-832e-4322-b052-998bfb3d8b5a" /> Kluster
+# <img width="50" height="50" src="https://github.com/user-attachments/assets/fff3642a-832e-4322-b052-998bfb3d8b5a" /> Kluster
 
 Kluster is a full-stack web platform for tracking and managing user collections. Built with Python and Flask, Kluster provides secure user authentication and robust, scalable database operations through SQLAlchemy.
 
